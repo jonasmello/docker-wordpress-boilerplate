@@ -1,0 +1,9 @@
+.env
+node_modules/
+bkp/
+src/themes/theme/css/
+src/themes/theme/js/
+db/*.sql
+todo-list.txt
+.vscode
+.idea/

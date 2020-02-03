@@ -1,0 +1,25 @@
+version: '3'
+services:
+  wordpress:
+    build: "./.docker/"
+    container_name: ${WP_CONTAINER_NAME}
+    volumes:
+      - "./db:/db/"
+      - "./src/themes/theme:/var/www/html/wp-content/themes/theme/"
+      - "./src/languages:/var/www/html/wp-content/languages/"
+      - "./.docker:/var/docker/"
+    ports:
+      - "80:80"
+      - "443:443"
+    environment: 
+      - "WORDPRESS_DB_HOST=database"
+      - "WORDPRESS_DB_USER=root"
+      - "WORDPRESS_DB_PASSWORD=${MYSQL_ROOT_PASSWORD}"
+    links:
+      - database
+
+  database:
+    image: mariadb:10.3.8
+    container_name: ${WP_CONTAINER_NAME}_db
+    environment: 
+      - "MYSQL_ROOT_PASSWORD"
