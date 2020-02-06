@@ -2,7 +2,7 @@ FROM wordpress:php7.4
 
 RUN apt-get update
 
-# RUN apt-get install -qq -y
+RUN apt-get install -qq -y mariadb-client
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;\
     chmod +x wp-cli.phar;\
